@@ -25,8 +25,3 @@
 `docker run --net my_bridge --name pyspark -p 8888:8888 pyspark-local`
  
 ## Open up http://localhost:8888 (Jupyter Notebook with pyspark)
- 
-## Upload the Notebook and the Data.csv files
- 
-* One note, when you stop the pyspark container it will delete what is in the Jupyter file structure, so make sure to save the notebook to your hard drive
-
