@@ -1,0 +1,26 @@
+FROM centos:7
+ 
+RUN \
+  cd /opt && \
+  yum -y update && \
+  yum -y install wget && \
+  yum -y install java-1.8.0-openjdk && \ 
+  yum -y install https://downloads.lightbend.com/scala/2.12.7/scala-2.12.7.rpm && \ 
+  yum -y install https://centos7.iuscommunity.org/ius-release.rpm && \
+  yum -y install python36u-pip && \ 
+  pip3.6 install --upgrade pip && \ 
+  wget http://apache.claz.org/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz && \ 
+  tar -xzf spark-2.4.0-bin-hadoop2.7.tgz && \ 
+  ln -s spark-2.4.0-bin-hadoop2.7 /opt/spark && \ 
+  pip3.6 install jupyter && \
+  pip3.6 install kafka-python
+ 
+ENV SPARK_HOME /opt/spark
+ENV PATH="/opt/spark/bin:${PATH}"
+ENV PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:$PYTHONPATH"
+ENV PYSPARK_DRIVER_PYTHON "jupyter"
+ENV PYSPARK_DRIVER_PYTHON_OPTS "notebook --allow-root --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.password=''"
+ENV PYSPARK_PYTHON python3.6
+ 
+WORKDIR /usr/dev/spark 
+ENTRYPOINT ["jupyter", "notebook", "--ip=0.0.0.0", "--NotebookApp.token=''", "--NotebookApp.password=''", "--allow-root"] run command. 
