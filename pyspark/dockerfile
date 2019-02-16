@@ -16,6 +16,8 @@ RUN \
   pip3.6 install Afinn && \
   pip3.6 install tweepy && \
   pip3.6 install pandas && \
+  pip3.6 install matplotlib && \
+  pip3.6 install seaborn && \
   pip3.6 install kafka-python
  
 ENV SPARK_HOME /opt/spark
