@@ -13,6 +13,9 @@ RUN \
   tar -xzf spark-2.4.0-bin-hadoop2.7.tgz && \ 
   ln -s spark-2.4.0-bin-hadoop2.7 /opt/spark && \ 
   pip3.6 install jupyter && \
+  pip3.6 install Afinn && \
+  pip3.6 install tweepy && \
+  pip3.6 install pandas && \
   pip3.6 install kafka-python
  
 ENV SPARK_HOME /opt/spark
@@ -22,5 +25,11 @@ ENV PYSPARK_DRIVER_PYTHON "jupyter"
 ENV PYSPARK_DRIVER_PYTHON_OPTS "notebook --allow-root --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.password=''"
 ENV PYSPARK_PYTHON python3.6
  
+COPY config.py /usr/dev/spark/config.py
+COPY SimpleKafkaConsumer.ipynb /usr/dev/spark/SimpleKafkaConsumer.ipynb
+COPY SimpleKafkaProducer.ipynb /usr/dev/spark/SimpleKafkaProducer.ipynb
+COPY TwitterKafkaConsumer.ipynb /usr/dev/spark/TwitterKafkaConsumer.ipynb
+COPY TwitterKafkaProducer.ipynb /usr/dev/spark/TwitterKafkaProducer.ipynb
+
 WORKDIR /usr/dev/spark 
 ENTRYPOINT ["jupyter", "notebook", "--ip=0.0.0.0", "--NotebookApp.token=''", "--NotebookApp.password=''", "--allow-root"] run command. 

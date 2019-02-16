@@ -1,16 +1,12 @@
 ## If the docker containers have already been created, but are stopped run this commands
 
-`docker start kafka my_dse pyspark`
+`docker start kafka pyspark`
 
 # First Time Loading Containers
 
-## Create the network bridge in order for the jupyter notebook to connect to cassandra and kafka
+## Create the network bridge in order for the jupyter notebook to connect to kafka
  
 `docker network create my_bridge`
- 
-## Start the dse-server image
- 
-`docker run -e DS_LICENSE=accept --net my_bridge --name my_dse -p 9042:9042 -d datastax/dse-server -k`
 
 ## Start the kafka server
 
@@ -18,7 +14,7 @@
 
 ## Build the dockerfile
 
-`docker build -t pyspark-local Pyspark/`
+`docker build -t pyspark-local pyspark/`
 
 ## Start the pre-configured pyspark juypter notebook 
  
