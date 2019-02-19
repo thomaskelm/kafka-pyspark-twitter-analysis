@@ -21,3 +21,9 @@
 `docker run --net my_bridge --name pyspark -p 8888:8888 pyspark-local`
  
 ## Open up http://localhost:8888 (Jupyter Notebook with pyspark)
+
+## Open the Simple Kafka Consumer and Producer
+
+## Change the API and Token Keys in the config.py file
+
+## Open the Twitter Kafka Consumer and Producer
