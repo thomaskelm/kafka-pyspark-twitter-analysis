@@ -1,8 +1,6 @@
-## If the docker containers have already been created, but are stopped run this commands
-
-`docker start kafka pyspark`
-
 # First Time Loading Containers
+
+## Make sure the Docker service is running
 
 ## Create the network bridge in order for the jupyter notebook to connect to kafka
  
@@ -27,3 +25,8 @@
 ## Change the API and Token Keys in the config.py file
 
 ## Open the Twitter Kafka Consumer and Producer
+
+
+# If the docker containers have already been created, but are stopped run this commands
+
+`docker start kafka pyspark`
